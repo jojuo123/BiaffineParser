@@ -4,7 +4,7 @@ from collections import namedtuple
 
 import torch
 import torch.distributed as dist
-from supar.utils.alg import kmeans
+from utils.alg import kmeans
 
 
 class Dataset(torch.utils.data.Dataset):

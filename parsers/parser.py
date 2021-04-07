@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import const
 import torch
 import torch.distributed as dist
-from supar.utils import Config, Dataset
+from utils import Config, Dataset
 from utils.field import Field
 from utils.logging import init_logger, logger
 from utils.metric import Metric

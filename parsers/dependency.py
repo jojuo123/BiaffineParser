@@ -2,8 +2,7 @@ import os
 
 import torch
 import torch.nn as nn
-from models import (BiaffineDependencyModel, CRF2oDependencyModel,
-                          CRFDependencyModel, CRFNPDependencyModel)
+from models.dependency import (BiaffineDependencyModel)
 from parsers.parser import Parser
 from utils import Config, Dataset, Embedding
 from utils.common import bos, pad, unk

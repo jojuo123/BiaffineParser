@@ -3,7 +3,7 @@
 import logging
 import os
 
-from supar.utils.parallel import is_master
+from utils.parallel import is_master
 from tqdm import tqdm
 
 

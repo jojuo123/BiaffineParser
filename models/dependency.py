@@ -1,6 +1,10 @@
 import torch
 import torch.nn as nn
-from modules import (LSTM, MLP, BertEmbedding, Biaffine)
+from modules.lstm import LSTM
+from modules.affine import Biaffine
+from modules.bert import BertEmbedding
+from modules.mlp import MLP
+from modules.scalar_mix import ScalarMix
 from modules.dropout import IndependentDropout, SharedDropout
 from utils import Config
 from utils.alg import eisner, eisner2o, mst
