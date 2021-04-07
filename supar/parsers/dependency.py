@@ -12,8 +12,8 @@ from supar.utils.fn import ispunct
 from supar.utils.logging import get_logger, progress_bar
 from supar.utils.metric import AttachmentMetric
 from supar.utils.transform import CoNLL
-from supar.torch.optim import Adam
-from supar.torch.optim.lr_scheduler import ExponentialLR
+from torch.optim import Adam
+from torch.optim.lr_scheduler import ExponentialLR
 
 logger = get_logger(__name__)
 

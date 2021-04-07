@@ -3,7 +3,7 @@
 from collections.abc import Iterable
 
 import nltk
-from utils.logging import get_logger, progress_bar
+from supar.utils.logging import get_logger, progress_bar
 
 logger = get_logger(__name__)
 

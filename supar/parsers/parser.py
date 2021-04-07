@@ -1,7 +1,7 @@
 import os
 from datetime import datetime, timedelta
 
-import const
+import supar.const
 import torch
 import torch.distributed as dist
 from supar.utils import Config, Dataset
@@ -13,6 +13,10 @@ from supar.utils.parallel import is_master
 
 
 class Parser(object):
+
+    @classmethod
+    def test(self):
+      print(supar.PRETRAINED)
 
     NAME = None
     MODEL = None
@@ -159,8 +163,8 @@ class Parser(object):
         if os.path.exists(path):
             state = torch.load(path)
         else:
-            state = torch.hub.load_state_dict_from_url(const.PRETRAINED[path] if path in supar.PRETRAINED else path)
-        cls = const.PARSER[state['name']] if cls.NAME is None else cls
+            state = torch.hub.load_state_dict_from_url(supar.const.PRETRAINED[path] if path in supar.const.PRETRAINED else path)
+        cls = supar.const.PARSER[state['name']] if cls.NAME is None else cls
         args = state['args'].update(args)
         model = cls.MODEL(**args)
         model.load_pretrained(state['pretrained'])
