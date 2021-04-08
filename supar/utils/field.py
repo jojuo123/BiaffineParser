@@ -3,8 +3,8 @@
 from collections import Counter
 
 import torch
-from utils.fn import pad
-from utils.vocab import Vocab
+from supar.utils.fn import pad
+from supar.utils.vocab import Vocab
 
 
 class RawField(object):

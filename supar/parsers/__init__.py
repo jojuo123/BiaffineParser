@@ -1,2 +1,2 @@
 from .dependency import (BiaffineDependencyParser)
-from .parser import Parser
+from .parser import (Parser)

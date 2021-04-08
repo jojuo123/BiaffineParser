@@ -7,6 +7,7 @@ from supar.modules.mlp import MLP
 from supar.modules.scalar_mix import ScalarMix
 from supar.modules.dropout import IndependentDropout, SharedDropout
 from supar.utils import Config
+from supar.modules.char_lstm import CharLSTM
 from supar.utils.alg import eisner, eisner2o, mst
 from supar.utils.transform import CoNLL
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence

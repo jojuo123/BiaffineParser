@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import torch
-from utils.fn import pad, stripe
+from supar.utils.fn import pad, stripe
 
 
 def kmeans(x, k, max_it=32):
