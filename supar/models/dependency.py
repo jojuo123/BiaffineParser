@@ -144,7 +144,8 @@ class BiaffineDependencyModel(nn.Module):
     def load_pretrained(self, embed=None):
         if embed is not None:
             self.pretrained = nn.Embedding.from_pretrained(embed)
-            nn.init.zeros_(self.word_embed.weight)
+            #nn.init.zeros_(self.word_embed.weight)
+            nn.init.orthogonal_(self.word_embed.weight)
         return self
 
     def forward(self, words, feats):
