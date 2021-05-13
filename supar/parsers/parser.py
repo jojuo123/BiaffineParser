@@ -178,11 +178,14 @@ class Parser(object):
         if hasattr(model, 'module'):
             model = self.model.module
         args = model.args
+        print(model.state_dict().keys())
         state_dict = {k: v.cpu() for k, v in model.state_dict().items()}
-        pretrained = state_dict.pop('pretrained.weight', None)
+        pretrained = state_dict.pop('posThread.pretrained.weight', None)
+        pretrainedLex = state_dict.pop('lexemThread.pretrained.weight', None)
         state = {'name': self.NAME,
                  'args': args,
                  'state_dict': state_dict,
                  'pretrained': pretrained,
+                 'pretrainedLex': pretrainedLex,
                  'transform': self.transform}
         torch.save(state, path)

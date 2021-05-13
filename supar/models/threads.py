@@ -67,7 +67,7 @@ class TwoThread(nn.Module):
         
         n_words2 = kwargs.get("n_words2", n_words)
         n_feats2 = kwargs.get("n_feats2", n_feats)
-        n_rel2 = kwargs.get("n_rel2", n_words)
+        n_rels2 = kwargs.get("n_rels2", n_rels)
         feat2 = kwargs.get("feat2", feat)
         n_embed2 = kwargs.get("n_embed2", n_embed)
         n_feat_embed2 = kwargs.get("n_feat_embed2", n_feat_embed)
@@ -118,10 +118,10 @@ class TwoThread(nn.Module):
 
     def freeze_unfreeze(self):
         for p in self.lexemeThread.parameters():
-            p.requires_grad = lexemetrain
+            p.requires_grad = self.lexemetrain
         
         for p in self.posThread.parameters():
-            p.requires_grad = postrain
+            p.requires_grad = self.postrain
     
     def load_pretrained(self, embed=None, embed2=None):
         if embed is not None:
