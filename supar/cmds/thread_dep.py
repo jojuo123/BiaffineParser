@@ -1,15 +1,16 @@
 import argparse
 
 from supar.parsers import BiaffineDependencyParser
+from supar.parsers import TwoThreadParser
 from supar.cmds.cmd import parse
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Create Biaffine Dependency Parser.')
+    parser = argparse.ArgumentParser(description='Create Double Thread Dependency Parser.')
     parser.add_argument('--tree', action='store_true', help='whether to ensure well-formedness')
     parser.add_argument('--proj', action='store_true', help='whether to projectivise the data')
     parser.add_argument('--partial', action='store_true', help='whether partial annotation is included')
-    parser.set_defaults(Parser=BiaffineDependencyParser)
+    parser.set_defaults(Parser=TwoThreadParser)
     subparsers = parser.add_subparsers(title='Commands', dest='mode')
     # train
     subparser = subparsers.add_parser('train', help='Train a parser.')
@@ -21,6 +22,7 @@ def main():
     subparser.add_argument('--train', default='data/ptb/train.conllx', help='path to train file')
     subparser.add_argument('--dev', default='data/ptb/dev.conllx', help='path to dev file')
     subparser.add_argument('--test', default='data/ptb/test.conllx', help='path to test file')
+    subparser.add_argument('--pospath', help='path to pretrained model of pos')
     subparser.add_argument('--embed', default='data/glove.6B.100d.txt', help='path to pretrained embeddings')
     subparser.add_argument('--unk', default='unk', help='unk token in pretrained embeddings')
     subparser.add_argument('--n-embed', default=100, type=int, help='dimension of embeddings')

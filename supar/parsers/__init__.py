@@ -1,2 +1,2 @@
-from .dependency import (BiaffineDependencyParser)
+from .dependency import (BiaffineDependencyParser, TwoThreadParser)
 from .parser import (Parser)

@@ -26,6 +26,8 @@ def parse(parser):
 
     if args.mode == 'train':
         parser = Parser.build(**args)
+        if args.lexemetrain:
+            parser.load(args.pospath)
         parser.train(**args)
     elif args.mode == 'evaluate':
         parser = Parser.load(args.path)

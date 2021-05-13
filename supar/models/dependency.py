@@ -100,7 +100,13 @@ class BiaffineDependencyModel(nn.Module):
         self.args = Config().update(locals())
         # the embedding layer
         self.word_embed = nn.Embedding(num_embeddings=n_words,
-                                       embedding_dim=n_embed)
+                                      embedding_dim=n_embed)
+        #sử dụng bert cho embedding 
+        # self.word_embed = BertEmbedding(model=bert,
+        #                                 n_layers=n_bert_layers,
+        #                                 n_out=n_feat_embed,
+        #                                 pad_index=feat_pad_index,
+        #                                 dropout=mix_dropout)
         if feat == 'char':
             self.feat_embed = CharLSTM(n_chars=n_feats,
                                        n_embed=n_char_embed,
@@ -141,13 +147,14 @@ class BiaffineDependencyModel(nn.Module):
         self.pad_index = pad_index
         self.unk_index = unk_index
 
+
+
     def load_pretrained(self, embed=None):
         if embed is not None:
             self.pretrained = nn.Embedding.from_pretrained(embed)
             #nn.init.zeros_(self.word_embed.weight)
             nn.init.orthogonal_(self.word_embed.weight)
         return self
-
     def forward(self, words, feats):
         r"""
         Args:
@@ -163,8 +170,8 @@ class BiaffineDependencyModel(nn.Module):
                 The second of shape ``[batch_size, seq_len, seq_len, n_labels]`` holds
                 scores of all possible labels on each arc.
         """
-
         batch_size, seq_len = words.shape
+
         # get the mask and lengths of given batch
         mask = words.ne(self.pad_index)
         ext_words = words
